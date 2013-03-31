@@ -29,7 +29,11 @@
   min-height: 20px;
   padding: 19px;
   margin-bottom: 20px;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+ }
+
+.border-right {
+  float: left;
+  background: url(gradientLine.png) no-repeat right !important;
 }
 
 
@@ -40,6 +44,8 @@
     style: 'normal';
   }  
   src: asset_url('ClarendonLTStd.otf', font);
+  src: asset_url('clarendonltstd.ttf', font) format('truetype'),
+       asset_url('ClarendonLTStd.woff', font) format('woff')
 }
 
 
@@ -49,6 +55,8 @@
     weight: 'lighter'; 
   }  
   src: asset_url('ClarendonLTStd-Light.otf', font);
+  src: asset_url('clarendonltstdlight.ttf', font) format('truetype'),
+       asset_url('ClarendonLTStd-Light.woff', font) format('woff')
 }
 
 @font-face {
@@ -57,21 +65,22 @@
     weight: 'bold'; 
   }  
   src: asset_url('ClarendonLTStd-Bold.otf', font);
+  src: asset_url('clarendonltstdbold.ttf', font) format('truetype'),
+       asset_url('ClarendonLTStd-Bold.woff', font) format('woff')
 }
 
 
 .sansFont {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: "HelveticaNeue", "Helvetica Neue", "HelveticaNeueRoman", "HelveticaNeue-Roman", "Helvetica Neue Roman", 'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif; font-weight:400; font-stretch:normal;
 }
 
-@font-face {
-  font: {
-    family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  }
-}
 
 .bold {
   font-family: ClarendonLTbold;
+}
+
+.hel-bold {
+  font-weight:bold;
 }
 
 .light {
@@ -99,7 +108,8 @@ p.tight {
 
 .ad-list {
   color: rgb(51, 51, 51);
-  display: block;
+  display: block;  
+  font-family: "HelveticaNeue", "Helvetica Neue", "HelveticaNeueRoman", "HelveticaNeue-Roman", "Helvetica Neue Roman", 'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif; font-weight:400; font-stretch:normal;
   font-size: 14px;
   line-height: 20px;
   list-style-image: none;
@@ -187,11 +197,11 @@ form input[type=submit] {
 
 
 
-::-webkit-input-placeholder { /* WebKit browsers */
-    color:    #999;
+input::-webkit-input-placeholder, textarea::webkit-input-placeholder { /* WebKit browsers */
+    color:    green;
 }
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color:    #999;
+    color:    green;
 }
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
     color:    #999;
@@ -232,10 +242,6 @@ form input[type=submit] {
   margin-bottom: -60px;
 }
 
-.tuck-med {
-  margin-bottom: -40px;
-}
-
 .tuck-small {
   margin-bottom: -20px;
 }
@@ -262,7 +268,7 @@ form input[type=submit] {
 }
 
 .feels {
-  font-size: 1.9em;
+  font-size: 2.3em;
   margin-top: 45px;
   font-family: ClarendonLTlight;
 }
@@ -300,9 +306,15 @@ form input[type=submit] {
   float: left;
 }
 
+.tomorrow-weather {
+  font-size: 1.3em;  
+}
+
 .DOW {
   font-family: ClarendonLTlight;
-  font-size: 3.0em;
+  font-size: 2.9em;
+  margin-top: 20px;
+  margin-bottom: 26px;
 }
 
 .DOW-outlook {
@@ -315,6 +327,11 @@ form input[type=submit] {
   height: 240px;
   background-color: yellow;
   position: relative;
+}
+
+.no-resize {
+  min-height: 240px;
+  min-width: 320px;
 }
 
 .relate {

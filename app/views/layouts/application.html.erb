@@ -88,7 +88,7 @@
     
     <div class="container-fluid">
       <div class="row-fluid">
-        <div class="span3">
+        <div class="span3 border-right">
           <div class="sidebar-ad">
             <div class="span4 logo">
             </div>
@@ -98,9 +98,9 @@
             <span class="bold">(000) 000-0000</span></p>
             <ul class="sansFont ad-list">
               
-              <li class="bold"><%= link_to "Hotel Link #1", "/path1"  %></li>
-              <li class="bold"><%= link_to "Hotel Link #2", "/path2"  %></li>
-              <li class="bold"><%= link_to "Hotel Link #3", "/path3"  %></li>
+              <li class="hel-bold"><%= link_to "Hotel Link #1", "/path1"  %></li>
+              <li class="hel-bold"><%= link_to "Hotel Link #2", "/path2"  %></li>
+              <li class="hel-bold"><%= link_to "Hotel Link #3", "/path3"  %></li>
             </ul>
           </div><!--/.well -->
         </div><!--/span-->
@@ -124,7 +124,7 @@
                 <span class="chance color">10%</span> <span class="color">chance of rain</span>
                 </p>
               
-                <div class="data span12 ">
+                <div class="data span12">
                   <div class="span7">
                     <p>Pressure<br />
                     <span class="color">29.99 in</span></p>
@@ -172,10 +172,10 @@
           </div> <!---end of row --->
          
             <div class="row-fluid section">
-              <div class="span6 tomorrow">
+              <div class="span5 tomorrow">
                 <p class="DOW">Tomorrow</p>
-                <div class="span6 relate"><%= image_tag("icons_medium/06_icon.png", :class => "tuck-med") %>
-                  <p class="tomorrow-weather center">Partly sunny<br />
+                <div class="span6"><%= image_tag("icons_medium/06_icon.png", :class => "tuck-small") %>
+                  <p class="tomorrow-weather center light">Partly sunny<br />
                     <span class="color">10% chance of rain</span>
                   </p>
                 </div>
@@ -185,12 +185,12 @@
                 </div>
               </div>
               
-              <div class="end-cap">
+              <div class="span7 end-cap no-resize">
                 </div>
             </div> <!--- row --->
             
             <div class="row-fluid section">
-              <div class="span12 outlook i">
+              <div class="span12 outlook">
                 <div class="span4 period">
                   <p class="DOW-outlook">Wednesday</p>
                     <div class="span6 relate"><%= image_tag("icons_small/08_icon.png", :class => "tuck-small") %>
