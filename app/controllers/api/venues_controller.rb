@@ -5,7 +5,6 @@ class Api::VenuesController < ApplicationController
     @j = {api_user_token: ENV['UNI_WEATHER_TOKEN'], api_user_id: ENV['UNI_WEATHER_USER_ID']}
     #http = EM::Synchrony.sync EventMachine::HttpRequest.new('http://pulse-dev.uniguest.com/api/handshake').post(:body => @j )
     http = ApiMethods::PulseDev.new.get_json_api_post_response('/handshake', @j)
-    p http.response
     #http.callback {
     #  puts "req completed"
     #  json = JSON.parse(http.response)
@@ -15,7 +14,7 @@ class Api::VenuesController < ApplicationController
     #  code = json['response']
     #}
     puts "rendering response"
-    respond_with(http.response) do |format|
+    respond_with(http) do |format|
       format.json do
         render
       end

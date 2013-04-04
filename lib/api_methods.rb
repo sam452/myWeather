@@ -158,7 +158,8 @@
 
     def get_json_api_post_response(url, post_obj={})
       http = EM::Synchrony.sync EventMachine::HttpRequest.new(self.base_uri+"#{url}").post(:body => post_obj)
-      process_response self.class.post(url, :body => post_obj).body
+      #process_response self.class.post(url, :body => post_obj).body
+      process_response http.response
       #http.callback {
        # json = JSON.parse(http.response)
       #  code = json['response']
@@ -248,7 +249,6 @@
     #end
 
     class PulseDev < ApiMethods
-      require 'em-http-request'
       #format :json
       #base_uri = "http://pulse-dev.uniguest.com/api"
       def base_uri
