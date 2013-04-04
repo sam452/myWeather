@@ -1,14 +1,14 @@
 # To change this template, choose Tools | Templates
 # and open the template in the editor.
 
-module Utils::Api
+
 
   class ApiMethods
 
     include GlobalModelMethods
 
-    API_USER_TOKEN = "efd86631c069d8b02819c6e3edacd61c"
-    API_USER_ID = 12
+    API_USER_TOKEN = "7b69596bfced2b5374648ad04b7d5c46"
+    API_USER_ID = 16
 
     def initialize
       @token_attempt_count = 0
@@ -157,7 +157,15 @@ module Utils::Api
     end
 
     def get_json_api_post_response(url, post_obj={})
-      process_response self.class.post(url, :body => post_obj).body
+      http = EventMachine::HttpRequest.new(self.base_uri&"#{url}").post :body => post_obj
+      puts self.base_uri&"#{url}"
+      http.callback {
+        json = JSON.parse(http.response)
+        code = json['response']
+      }
+
+
+      #process_response self.class.post(url, :body => post_obj).body
     end
 
     def get_json_api_put_response(url, post_obj={})
@@ -217,55 +225,58 @@ module Utils::Api
       BaseApiToolResult.new(false, nil)
     end
 
-    class Unitrack < ApiMethods
-      include HTTParty
-      format :json
-      #base_uri "http://localhost:3003/api"
-      base_uri "http://tracking.uniguest.com/api"
-      #debug_output $stderr
-    end
-
-    class PulseLocal < ApiMethods
-      include HTTParty
-      format :json
-      base_uri "http://localhost:3001/api"
-      #debug_output $stderr
-    end
-
-    class PulseOld < ApiMethods
-      include HTTParty
-      format :json
-      base_uri "http://pulse.uniguest.com/api"
-      #debug_output $stderr
-    end
+    #class Unitrack < ApiMethods
+    #  require 'em-http-request'
+    #  format :json
+    #  #base_uri "http://localhost:3003/api"
+    #  base_uri "http://tracking.uniguest.com/api"
+    #  #debug_output $stderr
+    #end
+    #
+    #class PulseLocal < ApiMethods
+    #  require 'em-http-request'
+    #  format :json
+    #  base_uri "http://localhost:3001/api"
+    #  #debug_output $stderr
+    #end
+    #
+    #class PulseOld < ApiMethods
+    #  include em-http-request
+    #  format :json
+    #  base_uri "http://pulse.uniguest.com/api"
+    #  #debug_output $stderr
+    #end
 
     class PulseDev < ApiMethods
-      include HTTParty
-      format :json
-      base_uri "http://pulse-dev.uniguest.com/api"
+      require 'em-http-request'
+      #format :json
+      #base_uri = "http://pulse-dev.uniguest.com/api"
+      def base_uri
+        "http://pulse-dev.uniguest.com/api"
+      end
       #debug_output $stderr
     end
 
-    class PulseStaging < ApiMethods
-      include HTTParty
-      format :json
-      base_uri "http://pulse-staging.uniguest.com/api"
-      #debug_output $stderr
-    end
-
-    class PulseDemo < ApiMethods
-      include HTTParty
-      format :json
-      base_uri "http://pulse-demo.uniguest.com/api"
-      #debug_output $stderr
-    end
-
-    class PulseProd < ApiMethods
-      include HTTParty
-      format :json
-      base_uri "http://unicore-pulse-prod.herokuapp.com/api"
-      #debug_output $stderr
-    end
+    #class PulseStaging < ApiMethods
+    #  include em-http-request
+    #  format :json
+    #  base_uri "http://pulse-staging.uniguest.com/api"
+    #  #debug_output $stderr
+    #end
+    #
+    #class PulseDemo < ApiMethods
+    #  include em-http-request
+    #  format :json
+    #  base_uri "http://pulse-demo.uniguest.com/api"
+    #  #debug_output $stderr
+    #end
+    #
+    #class PulseProd < ApiMethods
+    #  include em-http-request
+    #  format :json
+    #  base_uri "http://unicore-pulse-prod.herokuapp.com/api"
+    #  #debug_output $stderr
+    #end
 
     private
 
@@ -298,4 +309,3 @@ module Utils::Api
 
   end
 
-end

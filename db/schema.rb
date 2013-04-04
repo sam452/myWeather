@@ -11,6 +11,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20130325220003) do
+
+  create_table "forecasts", :force => true do |t|
+    t.integer  "zip"
+    t.integer  "period"
+    t.string   "icon"
+    t.string   "forecast_text"
+    t.decimal  "precipitation"
+    t.decimal  "pressure"
+    t.string   "venue"
+    t.decimal  "visibility"
+    t.string   "cloud_forecast"
+    t.decimal  "temperature_actual"
+    t.decimal  "feels_like"
+    t.decimal  "temperature_high"
+    t.decimal  "temperature_low"
+    t.integer  "humidity"
+    t.decimal  "snow_depth"
+    t.decimal  "rainfall"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
 
 end

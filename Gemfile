@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 gem 'rails', '3.2.11'
 gem 'sqlite3'
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
@@ -24,3 +25,13 @@ gem "better_errors", ">= 0.7.2", :group => :development
 gem "binding_of_caller", ">= 0.7.1", :group => :development, :platforms => [:mri_19, :rbx]
 gem "hub", ">= 1.10.2", :require => nil, :group => [:development]
 gem "httparty"
+#gem 'aws-s3'
+#gem 'pry-rails'
+gem 'thin'
+gem 'em-http-request'
+gem 'em-postgresql-adapter', :git => 'git://github.com/leftbee/em-postgresql-adapter.git'
+gem 'rack-fiber_pool',  :require => 'rack/fiber_pool'
+gem 'em-synchrony', :git     => 'git://github.com/igrigorik/em-synchrony.git',
+    :require => ['em-synchrony',
+                 'em-synchrony/activerecord',
+                 'em-synchrony/em-http']

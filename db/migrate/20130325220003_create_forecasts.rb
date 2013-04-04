@@ -5,7 +5,7 @@ class CreateForecasts < ActiveRecord::Migration
       t.integer :period
       t.string :icon
       t.string :forecast_text
-      t.precipitation :forecast
+      t.decimal :precipitation
       t.decimal :pressure
       t.string :venue
       t.decimal :visibility

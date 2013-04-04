@@ -1,2 +1,2 @@
-class Utils::Api::BaseApiToolResult < Struct.new(:success, :result, :code)
+class BaseApiToolResult < Struct.new(:success, :result, :code)
 end
