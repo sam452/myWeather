@@ -3,7 +3,8 @@ class Api::VenuesController < ApplicationController
 
   def index
     @j = {api_user_token: ENV['UNI_WEATHER_TOKEN'], api_user_id: ENV['UNI_WEATHER_USER_ID']}
-    http = EM::Synchrony.sync EventMachine::HttpRequest.new('http://pulse-dev.uniguest.com/api/handshake').post(:body => @j )
+    #http = EM::Synchrony.sync EventMachine::HttpRequest.new('http://pulse-dev.uniguest.com/api/handshake').post(:body => @j )
+    http = ApiMethods::PulseDev.new.get_json_api_post_response('/handshake', @j)
     p http.response
     #http.callback {
     #  puts "req completed"

@@ -157,13 +157,13 @@
     end
 
     def get_json_api_post_response(url, post_obj={})
-      http = EventMachine::HttpRequest.new(self.base_uri&"#{url}").post :body => post_obj
-      puts self.base_uri&"#{url}"
-      http.callback {
-        json = JSON.parse(http.response)
-        code = json['response']
-      }
-
+      http = EM::Synchrony.sync EventMachine::HttpRequest.new(self.base_uri+"#{url}").post(:body => post_obj)
+      process_response self.class.post(url, :body => post_obj).body
+      #http.callback {
+       # json = JSON.parse(http.response)
+      #  code = json['response']
+      #}
+     # http = EM::Synchrony.sync EventMachine::HttpRequest.new('http://pulse-dev.uniguest.com/api/handshake').post(:body => @j )
 
       #process_response self.class.post(url, :body => post_obj).body
     end
